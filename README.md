@@ -1,54 +1,36 @@
 # Interactive Wallpaper Map
 
-Windows-first desktop prototype built with **Tauri + React + TypeScript**.
+Version 1 MVP for marking country travel statuses directly on a world map.
 
-## Where to run commands
+## Features
+- World map (countries only) rendered from GeoJSON.
+- Country selection by clicking map polygons.
+- Country selection by search input + datalist.
+- Status assignment via dropdown:
+  - Visited (visually strongest emphasis)
+  - Want to visit
+  - Lived in
+  - Transited through
+- Local-only persistence via `localStorage`.
 
-Run all local commands from the repository root:
+## Architecture
+The app is deliberately split into lightweight layers:
+
+- `src/ui/` → DOM controls, events, search/list handling.
+- `src/map/` → map rendering + map-specific interaction.
+- `src/core/` → status definitions and status/business logic.
+- `src/data/` → persistence adapter (`localStorage`).
+
+This keeps style/UI changes independent from map logic and data storage.
+
+## Run locally
+From this folder:
 
 ```bash
 cd /workspace/Interactive_Wallpaper_Map
+python -m http.server 4173
 ```
 
-## Quick start
+Then open `http://localhost:4173`.
 
-```bash
-npm install
-npm run tauri dev
-```
-
-## Architecture (MVP foundation)
-
-The project is intentionally split by **feature modules** so the visual layer can be restyled without rewriting application logic.
-
-### Frontend (`src/`)
-
-- `app/`: app composition/root wiring.
-- `features/map/`: map rendering surface (currently placeholder).
-- `features/countries/`: visited-country domain state and UI.
-- `features/export/`: export UX + future map-to-image pipeline.
-- `features/wallpaper/`: wallpaper UX + future native invocation.
-- `shared/components/`: reusable shell/layout building blocks.
-- `shared/styles/`: design tokens and global styling.
-
-### Desktop shell (`src-tauri/`)
-
-- `src/main.rs`: Tauri app entry + command registration.
-- `tauri.conf.json`: window/build/bundle configuration.
-- `Cargo.toml`: Rust dependencies and package metadata.
-
-## Why this structure works
-
-1. **Modular evolution**: each future capability (map interactivity, export, wallpaper integration) has a dedicated module.
-2. **Design flexibility**: styles are centralized in `shared/styles`, making premium themes or style refreshes straightforward.
-3. **Windows-first readiness**: Tauri backend exists now, so adding a Windows wallpaper command later is incremental rather than a rewrite.
-4. **Safe MVP scope**: the app runs today with clear placeholders for the next implementation steps.
-
-## Next implementation steps
-
-1. Replace `WorldMapCanvas` placeholder with an SVG/TopoJSON world map layer and hit-testing.
-2. Persist country state (Tauri store or local database).
-3. Add export pipeline (frontend canvas/SVG render + Rust-side file save helper).
-4. Add explicit Windows wallpaper command in Rust (behind platform gating).
-
-> ⚠️ Future wallpaper integration will touch OS behavior on Windows. Keep it behind a clear user-confirmed action and test on a non-critical machine first.
+> Note: map geometry is fetched at runtime from a public GeoJSON URL, so internet access is required for the map to load.

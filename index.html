@@ -4,9 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive Wallpaper Map</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <main class="app-shell">
+      <section class="map-panel">
+        <header class="panel-header">
+          <h1>Interactive Wallpaper Map</h1>
+          <p>Mark countries by clicking the map or searching by name.</p>
+        </header>
+        <div id="map" aria-label="World map"></div>
+      </section>
+
+      <aside class="control-panel">
+        <div class="card">
+          <h2>Find Country</h2>
+          <label for="country-search">Country name</label>
+          <div class="search-row">
+            <input id="country-search" list="country-list" placeholder="Search country..." />
+            <button id="search-button" type="button">Go</button>
+          </div>
+          <datalist id="country-list"></datalist>
+        </div>
+
+        <div class="card">
+          <h2>Country Status</h2>
+          <p id="selected-country">Select a country from the map.</p>
+          <label for="status-select">Status</label>
+          <select id="status-select" disabled>
+            <option value="">Choose status</option>
+          </select>
+          <div class="button-row">
+            <button id="save-status" type="button" disabled>Save</button>
+            <button id="clear-status" type="button" disabled>Clear</button>
+          </div>
+        </div>
+
+        <div class="card legend">
+          <h2>Legend</h2>
+          <ul id="legend-list"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
