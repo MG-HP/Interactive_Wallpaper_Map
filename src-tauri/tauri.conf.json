@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Interactive Wallpaper Map",
+  "version": "0.1.0",
+  "identifier": "com.example.interactivewallpapermap",
+  "build": {
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Interactive Wallpaper Map",
+        "width": 1200,
+        "height": 800
+      }
+    ]
+  },
+  "bundle": {
+    "active": false
+  }
+}
