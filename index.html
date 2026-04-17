@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Wallpaper Map</title>
+    <link rel="stylesheet" href="src/styles/tokens.css" />
+    <link rel="stylesheet" href="src/styles/base.css" />
+    <link rel="stylesheet" href="src/styles/layout.css" />
+    <link rel="stylesheet" href="src/styles/components.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="topbar panel panel--glass">
+        <div>
+          <p class="eyebrow">Interactive Wallpaper Map</p>
+          <h1>Wallpaper Builder</h1>
+        </div>
+        <div class="topbar__actions">
+          <button class="button button--quiet">Save preset</button>
+          <button class="button">Export image</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="map-stage panel" aria-label="Interactive map area">
+          <div class="map-stage__toolbar">
+            <label class="search-input">
+              <span class="sr-only">Search countries</span>
+              <input type="search" placeholder="Search countries…" />
+            </label>
+            <div class="segmented">
+              <button class="segmented__item is-active">Political</button>
+              <button class="segmented__item">Minimal</button>
+              <button class="segmented__item">Topography</button>
+            </div>
+          </div>
+          <div class="map-canvas" role="img" aria-label="Map preview">
+            <p>Map canvas placeholder for MVP</p>
+          </div>
+        </section>
+
+        <aside class="controls">
+          <section class="panel control-group">
+            <h2>Country status</h2>
+            <div class="grid-two">
+              <button class="button button--status">Visited</button>
+              <button class="button button--status">Wishlist</button>
+              <button class="button button--status">Planned</button>
+              <button class="button button--status">Hidden</button>
+            </div>
+          </section>
+
+          <section class="panel control-group">
+            <h2>Wallpaper controls</h2>
+            <label class="stacked-field">
+              <span>Background style</span>
+              <select>
+                <option>Soft dark</option>
+                <option>Soft light</option>
+                <option>Gradient</option>
+              </select>
+            </label>
+            <label class="stacked-field">
+              <span>Overlay intensity</span>
+              <input type="range" min="0" max="100" value="35" />
+            </label>
+          </section>
+
+          <section class="panel control-group">
+            <h2>Resolution</h2>
+            <div class="chip-row">
+              <button class="chip is-active">4K</button>
+              <button class="chip">5K</button>
+              <button class="chip">Ultrawide</button>
+              <button class="chip">Dual monitor</button>
+            </div>
+            <label class="stacked-field">
+              <span>Custom</span>
+              <div class="inline-fields">
+                <input type="number" value="3840" />
+                <span>×</span>
+                <input type="number" value="2160" />
+              </div>
+            </label>
+          </section>
+
+          <section class="panel control-group">
+            <h2>Export</h2>
+            <div class="grid-two">
+              <button class="button">PNG</button>
+              <button class="button">JPG</button>
+              <button class="button button--quiet">Poster mode</button>
+              <button class="button button--quiet">Batch layouts</button>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
