@@ -1,3 +1,12 @@
+<<<<<<< codex/refine-app-ui-and-structure-for-elegance
+const root = document.documentElement;
+
+// Basic future-ready hook for theme switching and persisted user style.
+const preferredTheme = localStorage.getItem("iwm-theme");
+if (preferredTheme) {
+  root.setAttribute("data-theme", preferredTheme);
+}
+=======
 import { countryEntries, getLatestUpdateDate } from './data.js';
 import { exportWallpaper, renderWallpaper } from './export/pipeline.js';
 
@@ -87,3 +96,4 @@ exportBtn.addEventListener('click', () => {
 
 renderCountryList();
 renderPreview();
+>>>>>>> main
