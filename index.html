@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< codex/refine-app-ui-and-structure-for-elegance
     <title>Interactive Wallpaper Map</title>
     <link rel="stylesheet" href="src/styles/tokens.css" />
     <link rel="stylesheet" href="src/styles/base.css" />
@@ -97,6 +98,55 @@
         </aside>
       </main>
     </div>
+=======
+    <title>Interactive Wallpaper Map MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel map-panel">
+        <header class="panel-header">
+          <h1>Interactive Wallpaper Map</h1>
+          <p>Preview of the current styled map for export.</p>
+        </header>
+        <div class="map-frame">
+          <canvas id="mapPreviewCanvas" width="1366" height="768" aria-label="Map preview"></canvas>
+        </div>
+      </section>
+
+      <section class="panel controls-panel">
+        <h2>Export</h2>
+
+        <label for="format">File format</label>
+        <select id="format">
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPG</option>
+        </select>
+
+        <label for="resolutionPreset">Resolution preset</label>
+        <select id="resolutionPreset">
+          <option value="1366x768">Default laptop (1366 × 768)</option>
+          <option value="1920x1080">Default widescreen (1920 × 1080)</option>
+          <option value="2560x1440">Default monitor (2560 × 1440)</option>
+          <option value="custom">Custom</option>
+        </select>
+
+        <div class="custom-resolution" id="customResolutionInputs" hidden>
+          <label for="width">Width</label>
+          <input id="width" type="number" min="640" max="7680" step="1" value="1920" />
+
+          <label for="height">Height</label>
+          <input id="height" type="number" min="360" max="4320" step="1" value="1080" />
+        </div>
+
+        <button id="exportBtn">Export wallpaper</button>
+        <p class="hint">The latest country update date is rendered in the upper-right corner of the exported image.</p>
+
+        <h3>Country updates (demo data)</h3>
+        <ul id="countryList" class="country-list"></ul>
+      </section>
+    </main>
+>>>>>>> main
 
     <script type="module" src="src/app.js"></script>
   </body>
